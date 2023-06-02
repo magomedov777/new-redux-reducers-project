@@ -25,7 +25,8 @@ export type TasksStateType = {
 
 
 function AppWithRedux() {
-    
+    let todolistId1 = v1();
+    let todolistId2 = v1();
 
     let todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
     let tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
