@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppRootStateType } from './state/store';
 
 
-export type FilterValuesType = "all" | "active" | "completed";
 export type TodolistType = {
     id: string
     title: string
