@@ -1,10 +1,10 @@
-import React, {ChangeEvent} from 'react';
-import {FilterValuesType} from './App';
-import {AddItemForm} from './AddItemForm';
-import {EditableSpan} from './EditableSpan';
+import React, { ChangeEvent, FC, memo } from 'react';
+import { FilterValuesType } from './App';
+import { AddItemForm } from './AddItemForm';
+import { EditableSpan } from './EditableSpan';
 import IconButton from "@mui/material/IconButton/IconButton";
-import {Delete} from "@mui/icons-material";
-import {Button, Checkbox} from "@mui/material";
+import { Delete } from "@mui/icons-material";
+import { Button, Checkbox } from "@mui/material";
 import { TodolistType } from './AppWithRedux';
 import { useSelector } from 'react-redux';
 import { AppRootStateType } from './state/store';
@@ -19,12 +19,12 @@ export type TaskType = {
     isDone: boolean
 }
 
-type PropsType = {
+type Props = {
     todolist: TodolistType
 }
 
-export function TodolistWithRedux({todolist}: PropsType) {
-    const {id, filter, title} = todolist
+export const TodolistWithRedux: FC<Props> = memo(({ todolist }) => {
+    const { id, filter, title } = todolist
 
     let tasks = useSelector<AppRootStateType, Array<TaskType>>(state => state.tasks[id])
 
@@ -61,7 +61,7 @@ export function TodolistWithRedux({todolist}: PropsType) {
                 <Delete />
             </IconButton>
         </h3>
-        <AddItemForm addItem={addTask}/>
+        <AddItemForm addItem={addTask} />
         <div>
             {
                 tasks.map(t => {
@@ -92,20 +92,20 @@ export function TodolistWithRedux({todolist}: PropsType) {
         </div>
         <div>
             <Button variant={filter === 'all' ? 'outlined' : 'text'}
-                    onClick={onAllClickHandler}
-                    color={'inherit'}
+                onClick={onAllClickHandler}
+                color={'inherit'}
             >All
             </Button>
             <Button variant={filter === 'active' ? 'outlined' : 'text'}
-                    onClick={onActiveClickHandler}
-                    color={'primary'}>Active
+                onClick={onActiveClickHandler}
+                color={'primary'}>Active
             </Button>
             <Button variant={filter === 'completed' ? 'outlined' : 'text'}
-                    onClick={onCompletedClickHandler}
-                    color={'secondary'}>Completed
+                onClick={onCompletedClickHandler}
+                color={'secondary'}>Completed
             </Button>
         </div>
     </div>
-}
+})
 
 
