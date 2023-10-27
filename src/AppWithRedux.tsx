@@ -24,7 +24,6 @@ export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
-
 const AppWithRedux: FC = memo(() => {
     let todolistId1 = v1();
     let todolistId2 = v1();
@@ -34,39 +33,38 @@ const AppWithRedux: FC = memo(() => {
 
     const dispatch = useDispatch()
 
-
-    function removeTask(id: string, todolistId: string) {
+    const removeTask = (id: string, todolistId: string) => {
         dispatch(removeTaskAC(id, todolistId))
     }
 
-    function addTask(title: string, todolistId: string) {
+    const addTask = (title: string, todolistId: string) => {
         dispatch(addTaskAC(title, todolistId))
     }
 
-    function changeStatus(id: string, isDone: boolean, todolistId: string) {
+    const changeStatus = (id: string, isDone: boolean, todolistId: string) => {
         dispatch(changeTaskStatusAC(id, isDone, todolistId))
     }
 
-    function changeTaskTitle(id: string, newTitle: string, todolistId: string) {
+    const changeTaskTitle = (id: string, newTitle: string, todolistId: string) => {
         dispatch(changeTaskTitleAC(id, newTitle, todolistId))
     }
 
 
-    function changeFilter(value: FilterValuesType, todolistId: string) {
+    const changeFilter = (value: FilterValuesType, todolistId: string) => {
         dispatch(changeTodolistFilterAC(todolistId, value))
     }
 
-    function removeTodolist(id: string) {
+    const removeTodolist = (id: string) => {
         const action = removeTodolistAC(id)
         dispatch(action)
         dispatch(action)
     }
 
-    function changeTodolistTitle(id: string, title: string) {
+    const changeTodolistTitle = (id: string, title: string) => {
         dispatch(changeTodolistTitleAC(id, title))
     }
 
-    function addTodolist(title: string) {
+    const addTodolist = (title: string) => {
         const action = addTodolistAC(title)
         dispatch(action)
     }
