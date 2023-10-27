@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { FC, memo, useReducer, useState } from 'react';
 import './App.css';
 import { TaskType } from './Todolist';
 import { v1 } from 'uuid';
@@ -25,7 +25,7 @@ export type TasksStateType = {
 }
 
 
-function AppWithRedux() {
+const AppWithRedux: FC = memo(() => {
     let todolistId1 = v1();
     let todolistId2 = v1();
 
@@ -93,7 +93,7 @@ function AppWithRedux() {
                         todolists.map(tl => {
                             return <Grid key={tl.id} item>
                                 <Paper style={{ padding: "10px" }}>
-                                    <TodolistWithRedux todolist={tl}/>
+                                    <TodolistWithRedux todolist={tl} />
                                 </Paper>
                             </Grid>
                         })
@@ -102,6 +102,6 @@ function AppWithRedux() {
             </Container>
         </div>
     );
-}
+})
 
 export default AppWithRedux;

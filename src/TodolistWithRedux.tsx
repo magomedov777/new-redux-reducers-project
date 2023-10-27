@@ -25,9 +25,7 @@ type Props = {
 
 export const TodolistWithRedux: FC<Props> = memo(({ todolist }) => {
     const { id, filter, title } = todolist
-
     let tasks = useSelector<AppRootStateType, Array<TaskType>>(state => state.tasks[id])
-
     const dispatch = useDispatch()
 
     const addTask = (title: string) => {
@@ -42,11 +40,8 @@ export const TodolistWithRedux: FC<Props> = memo(({ todolist }) => {
     }
 
     const onAllClickHandler = () => dispatch(changeTodolistFilterAC(id, "all"))
-
     const onActiveClickHandler = () => dispatch(changeTodolistFilterAC(id, "active"))
-
     const onCompletedClickHandler = () => dispatch(changeTodolistFilterAC(id, "completed"))
-
 
     if (filter === "active") {
         tasks = tasks.filter(t => t.isDone === false);
@@ -73,8 +68,6 @@ export const TodolistWithRedux: FC<Props> = memo(({ todolist }) => {
                     const onTitleChangeHandler = (newValue: string) => {
                         dispatch(changeTaskTitleAC(t.id, newValue, id))
                     }
-
-
                     return <div key={t.id} className={t.isDone ? "is-done" : ""}>
                         <Checkbox
                             checked={t.isDone}
