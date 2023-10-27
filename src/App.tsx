@@ -113,7 +113,6 @@ function App() {
         // })
         setTodolists([newTodolist, ...todolists])
         setTasks({ ...tasks, [newTodolistId]: [] })
-
     }
 
     return (
@@ -145,7 +144,6 @@ function App() {
                             if (tl.filter === "completed") {
                                 tasksForTodolist = allTodolistTasks.filter(t => t.isDone === true);
                             }
-
                             return <Grid key={tl.id} item>
                                 <Paper style={{ padding: "10px" }}>
                                     <Todolist
