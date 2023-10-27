@@ -42,37 +42,28 @@ function App() {
 
 
     const removeTask = (id: string, todolistId: string) => {
-        // //достанем нужный массив по todolistId:
         // let todolistTasks = tasks[todolistId];
-        // // перезапишем в этом объекте массив для нужного тудулиста отфилтрованным массивом:
         // tasks[todolistId] = todolistTasks.filter(t => t.id != id);
-        // // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         // setTasks({...tasks});
         setTasks({ ...tasks, [todolistId]: tasks[todolistId].filter(el => el.id !== id) })
     }
 
     const addTask = (title: string, todolistId: string) => {
         let task = { id: v1(), title: title, isDone: false };
-        // //достанем нужный массив по todolistId:
         // let todolistTasks = tasks[todolistId];
-        // // перезапишем в этом объекте массив для нужного тудулиста копией, добавив в начало новую таску:
         // tasks[todolistId] = [task, ...todolistTasks];
-        // // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         // setTasks({ ...tasks });
         setTasks({ ...tasks, [todolistId]: [...tasks[todolistId], task] })
     }
 
-    function changeStatus(id: string, isDone: boolean, todolistId: string) {
-        //достанем нужный массив по todolistId:
-        let todolistTasks = tasks[todolistId];
-        // найдём нужную таску:
-        let task = todolistTasks.find(t => t.id === id);
-        //изменим таску, если она нашлась
-        if (task) {
-            task.isDone = isDone;
-            // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
-            setTasks({ ...tasks });
-        }
+    const changeStatus = (id: string, isDone: boolean, todolistId: string) => {
+        // let todolistTasks = tasks[todolistId];
+        // let task = todolistTasks.find(t => t.id === id);
+        // if (task) {
+        //     task.isDone = isDone;
+        //     setTasks({ ...tasks });
+        // }
+        setTasks({ ...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? { ...el, isDone } : el) })
     }
 
     function changeTaskTitle(id: string, newTitle: string, todolistId: string) {
