@@ -88,20 +88,19 @@ function App() {
 
     const removeTodolist = (id: string) => {
         // setTodolists(todolists.filter(tl => tl.id != id));
-        // delete tasks[id]; // удаляем св-во из объекта... значением которого являлся массив тасок
+        // delete tasks[id];
         // setTasks({ ...tasks });
         setTodolists(todolists.filter(el => el.id !== id))
         delete tasks[id]
     }
 
-    function changeTodolistTitle(id: string, title: string) {
-        // найдём нужный todolist
-        const todolist = todolists.find(tl => tl.id === id);
-        if (todolist) {
-            // если нашёлся - изменим ему заголовок
-            todolist.title = title;
-            setTodolists([...todolists]);
-        }
+    const changeTodolistTitle = (id: string, title: string) => {
+        // const todolist = todolists.find(tl => tl.id === id);
+        // if (todolist) {
+        //     todolist.title = title;
+        //     setTodolists([...todolists]);
+        // }
+        setTodolists(todolists.map(el => el.id === id ? { ...el, title } : el))
     }
 
     function addTodolist(title: string) {
