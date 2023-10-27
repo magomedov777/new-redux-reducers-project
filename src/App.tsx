@@ -66,17 +66,14 @@ function App() {
         setTasks({ ...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? { ...el, isDone } : el) })
     }
 
-    function changeTaskTitle(id: string, newTitle: string, todolistId: string) {
-        //достанем нужный массив по todolistId:
-        let todolistTasks = tasks[todolistId];
-        // найдём нужную таску:
-        let task = todolistTasks.find(t => t.id === id);
-        //изменим таску, если она нашлась
-        if (task) {
-            task.title = newTitle;
-            // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
-            setTasks({ ...tasks });
-        }
+    const changeTaskTitle = (id: string, newTitle: string, todolistId: string) => {
+        // let todolistTasks = tasks[todolistId];
+        // let task = todolistTasks.find(t => t.id === id);
+        // if (task) {
+        //     task.title = newTitle;
+        //     setTasks({ ...tasks });
+        // }
+        setTasks({ ...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? { ...el, title: newTitle } : el) })
     }
 
 
