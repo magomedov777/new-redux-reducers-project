@@ -64,7 +64,6 @@ export const Todolist: FC<Props> = ({ id, title, tasks, removeTask, changeFilter
                         changeTaskTitle(t.id, newValue, id);
                     }
 
-
                     return <div key={t.id} className={t.isDone ? "is-done" : ""}>
                         <Checkbox
                             checked={t.isDone}
