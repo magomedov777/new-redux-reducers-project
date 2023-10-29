@@ -22,7 +22,7 @@ export type TasksStateType = {
 }
 
 
-function AppWithReducer() {
+const AppWithReducer = () => {
     let todolistId1 = v1();
     let todolistId2 = v1();
 
@@ -43,38 +43,37 @@ function AppWithReducer() {
     });
 
 
-    function removeTask(id: string, todolistId: string) {
+    const removeTask = (id: string, todolistId: string) => {
         dispatchToTasks(removeTaskAC(id, todolistId))
     }
 
-    function addTask(title: string, todolistId: string) {
+    const addTask = (title: string, todolistId: string) => {
         dispatchToTasks(addTaskAC(title, todolistId))
     }
 
-    function changeStatus(id: string, isDone: boolean, todolistId: string) {
+    const changeStatus = (id: string, isDone: boolean, todolistId: string) => {
         dispatchToTasks(changeTaskStatusAC(id, isDone, todolistId))
     }
 
-    function changeTaskTitle(id: string, newTitle: string, todolistId: string) {
+    const changeTaskTitle = (id: string, newTitle: string, todolistId: string) => {
         dispatchToTasks(changeTaskTitleAC(id, newTitle, todolistId))
     }
 
-
-    function changeFilter(value: FilterValuesType, todolistId: string) {
+    const changeFilter = (value: FilterValuesType, todolistId: string) => {
         dispatchToTodolists(changeTodolistFilterAC(todolistId, value))
     }
 
-    function removeTodolist(id: string) {
+    const removeTodolist = (id: string) => {
         const action = removeTodolistAC(id)
         dispatchToTodolists(action)
         dispatchToTasks(action)
     }
 
-    function changeTodolistTitle(id: string, title: string) {
+    const changeTodolistTitle = (id: string, title: string) => {
         dispatchToTodolists(changeTodolistTitleAC(id, title))
     }
 
-    function addTodolist(title: string) {
+    const addTodolist = (title: string) => {
         const action = addTodolistAC(title)
         dispatchToTasks(action)
         dispatchToTodolists(action)
