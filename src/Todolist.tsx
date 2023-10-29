@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC } from 'react';
+import React, { ChangeEvent, FC, memo } from 'react';
 import { FilterValuesType } from './App';
 import { AddItemForm } from './AddItemForm';
 import { EditableSpan } from './EditableSpan';
@@ -27,7 +27,7 @@ type Props = {
     changeTaskTitle: (taskId: string, newTitle: string, todolistId: string) => void
 }
 
-export const Todolist: FC<Props> = ({ id, title, tasks, removeTask, changeFilter,
+export const Todolist: FC<Props> = memo(({ id, title, tasks, removeTask, changeFilter,
     addTask, changeTaskStatus, removeTodolist,
     changeTodolistTitle, changeTaskTitle, filter }) => {
     const addTaskCallback = (title: string) => {
@@ -95,6 +95,6 @@ export const Todolist: FC<Props> = ({ id, title, tasks, removeTask, changeFilter
             </Button>
         </div>
     </div>
-}
+})
 
 
