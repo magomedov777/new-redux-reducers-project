@@ -1,13 +1,13 @@
 import IconButton from '@mui/material/IconButton/IconButton';
 import TextField from '@mui/material/TextField/TextField';
-import React, { ChangeEvent, FC, KeyboardEvent, useState } from 'react';
+import React, { ChangeEvent, FC, KeyboardEvent, memo, useState } from 'react';
 import { AddBox } from "@mui/icons-material";
 
 type Props = {
     addItem: (title: string) => void
 }
 
-export const AddItemForm: FC<Props> = ({ addItem }) => {
+export const AddItemForm: FC<Props> = memo(({ addItem }) => {
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
 
@@ -44,4 +44,4 @@ export const AddItemForm: FC<Props> = ({ addItem }) => {
             <AddBox />
         </IconButton>
     </div>
-}
+})
